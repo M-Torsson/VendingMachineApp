@@ -18,12 +18,16 @@ public class VendingMachineImpl implements IVendingMachine {
 
     @Override
     public void insertCoin(int coin) {
-
+        if (coin == 1 || coin == 2 || coin == 5 || coin == 10 || coin == 20 || coin == 50) {
+            balance += coin;
+        } else {
+            System.out.println("Invalid coin.");
+        }
     }
 
     @Override
     public int getBalance() {
-        return 0;
+        return balance;
     }
 
     @Override
