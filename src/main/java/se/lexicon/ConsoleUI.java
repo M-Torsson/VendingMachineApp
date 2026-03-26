@@ -61,7 +61,7 @@ public class ConsoleUI {
             System.out.println(
                     product.getId() + " - " +
                             product.getName() + " - Price: " +
-                            product.getPrice() + " - Quantity: " +
+                            product.getPrice() + " SEK - Quantity: " +
                             product.getQuantity() + " - " +
                             product.getDescription()
             );
