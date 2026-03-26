@@ -32,16 +32,38 @@ public class VendingMachineImpl implements IVendingMachine {
 
     @Override
     public Product purchaseProduct(int productId) {
+        for (Product product : products) {
+            if (product.getId() == productId) {
+                if (product.getQuantity() <= 0) {
+                    System.out.println("Product is out of stock.");
+                    return null;
+                }
+
+                if (balance < product.getPrice()) {
+                    System.out.println("Not enough balance.");
+                    return null;
+                }
+
+                balance -= product.getPrice();
+                product.setQuantity(product.getQuantity() - 1);
+
+                return product;
+            }
+        }
+
+        System.out.println("Product not found.");
         return null;
     }
 
     @Override
     public int returnChange() {
-        return 0;
+        int change = balance;
+        balance = 0;
+        return change;
     }
 
     @Override
     public List<Product> getProducts() {
-        return null;
+        return products;
     }
 }
